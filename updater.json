@@ -3,7 +3,7 @@
   "author": "CFG",
   "version": "1.0.0",
   "forceDowngrade": false,
-  "downloadUpdateUrl": "",
+  "downloadUpdateUrl": "https://github.com/AppeazeTheCheese/JETLootFix/archive/1.0.0.zip",
   "excludeFromUpdate":[
     "updater.json"
   ]
