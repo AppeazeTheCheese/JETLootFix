@@ -1,0 +1,10 @@
+{
+  "name": "LootFix",
+  "author": "CFG",
+  "version": "1.0.0",
+  "forceDowngrade": false,
+  "downloadUpdateUrl": "",
+  "excludeFromUpdate":[
+    "updater.json"
+  ]
+}
