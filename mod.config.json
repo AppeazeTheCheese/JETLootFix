@@ -1,0 +1,13 @@
+{
+	"autoUpdate": true,
+	"checkUpdateUrl": "",
+	
+	"name": "LootFix",
+	"author": "CFG",
+	"version": "1.0.0",
+	"license": "MIT",
+	"src": {
+		"src/init.js": "TamperModLoad",
+		"src/cacheSettings.js" : "CacheModLoad"
+	}
+}
