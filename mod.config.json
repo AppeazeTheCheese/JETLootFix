@@ -1,6 +1,6 @@
 {
 	"autoUpdate": true,
-	"checkUpdateUrl": "",
+	"checkUpdateUrl": "https://raw.githubusercontent.com/AppeazeTheCheese/JETLootFix/main/updater.json",
 	
 	"name": "LootFix",
 	"author": "CFG",
