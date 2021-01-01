@@ -370,12 +370,12 @@ class LocationServer {
         let forced = location.loot.forced;
         let mounted = location.loot.mounted;
         let statics = location.loot.static;
-		// Deep copy so dynamic can be modified
-		let dynamic = JSON.parse(JSON.stringify(this.location.loot.dynamic));		
-		output.Loot = [];
+	// Deep copy so dynamic can be modified
+	let dynamic = JSON.parse(JSON.stringify(location.loot.dynamic));		
+	output.Loot = [];
 		
-		let counters = [];
-		let count = _MountedLootPush(mounted, ids, output);
+	let counters = [];
+	let count = _MountedLootPush(mounted, ids, output);
         // mounted weapons
         /*for (let i in mounted)
         {
