@@ -4,7 +4,7 @@
 	
 	"name": "LootFix",
 	"author": "CFG",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"license": "MIT",
 	"src": {
 		"src/init.js": "TamperModLoad",
