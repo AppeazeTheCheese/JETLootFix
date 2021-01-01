@@ -5,7 +5,6 @@
   "forceDowngrade": false,
   "downloadUpdateUrl": "https://github.com/AppeazeTheCheese/JETLootFix/archive/1.0.3.zip",
   "excludeFromUpdate":[
-    "updater.json",
-    "Config/"
+    "updater.json"
   ]
 }
