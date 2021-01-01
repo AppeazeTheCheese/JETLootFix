@@ -1,9 +1,9 @@
 {
   "name": "LootFix",
   "author": "CFG",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "forceDowngrade": false,
-  "downloadUpdateUrl": "https://github.com/AppeazeTheCheese/JETLootFix/archive/1.0.2.zip",
+  "downloadUpdateUrl": "https://github.com/AppeazeTheCheese/JETLootFix/archive/1.0.3.zip",
   "excludeFromUpdate":[
     "updater.json",
     "Config/"
