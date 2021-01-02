@@ -1,6 +1,9 @@
 exports.mod = (mod_info) => {
-	
-	var items = fileIO.readParsed(db.user.cache.items).data;
+	var itemsData = fileIO.readParsed(db.user.cache.items);
+	var items = itemsData;
+	if(!itemsData.data){
+		itemsData = {"err": 0, "errmsg": null, "data": items};
+	}
 	
 	let spawnChances = [];
 	let spawnFilters = [];
@@ -30,6 +33,6 @@ exports.mod = (mod_info) => {
 		}
 	}
 	
-	fileIO.write(db.user.cache.items, items);
+	fileIO.write(db.user.cache.items, itemsData);
 	logger.logSuccess("[LootFix] Settings applied")
 }
