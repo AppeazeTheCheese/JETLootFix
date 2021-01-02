@@ -1,9 +1,9 @@
 exports.mod = (mod_info) => {
 	var itemsData = fileIO.readParsed(db.user.cache.items);
-	var items = itemsData;
 	if(!itemsData.data){
 		itemsData = {"err": 0, "errmsg": null, "data": items};
 	}
+	var items = itemsData.data;
 	
 	let spawnChances = [];
 	let spawnFilters = [];
