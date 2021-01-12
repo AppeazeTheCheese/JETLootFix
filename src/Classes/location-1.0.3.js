@@ -167,6 +167,7 @@ function _GenerateContainerLoot(_items) {
 	let idSuffix = parseInt(parentId.substring(parentId.length - 4), 16) + 1;
 	let container2D = Array(container._props.Grids[0]._props.cellsV).fill().map(() => Array(container._props.Grids[0]._props.cellsH).fill(0));
 	let maxProbability = container.maxProbability;
+	let addedPresets = [];
 
 	// Add every chance together for weighted rng
 	let minCount = _RollMaxItemsToSpawn(container);
@@ -212,6 +213,12 @@ function _GenerateContainerLoot(_items) {
 				height = item._props.Height;
 
 				if (rolled.preset != null) {
+					if(addedPresets.includes(rolled.preset._id))
+					{
+						i--;
+						continue;
+					}
+					addedPresets.push(rolled.preset._id);
 					let size = helper_f.getItemSize(item._id, rolled.preset._items[0]._id, rolled.preset._items);
 					// Guns will need to load a preset of items
 					item._props.presetId = rolled.preset._id;
