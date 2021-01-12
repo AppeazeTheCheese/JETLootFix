@@ -320,6 +320,7 @@ class LocationServer {
 		//_database.items[_ID_]._props.SpawnChance // ItemSpawnChance
 		
         //let container = this.loot[_items[0]._tpl];
+		let addedPresets = [];
         let parentId = _items[0]._id;
         let idPrefix = parentId.substring(0, parentId.length - 4);
         let idSuffix = parseInt(parentId.substring(parentId.length - 4), 16) + 1;
@@ -386,6 +387,12 @@ class LocationServer {
 					
 					if (rolled.preset != null)
 					{
+						if(addedPresets.includes(rolled.preset._id))
+						{
+							i--;
+							continue;
+						}
+						addedPresets.push(rolled.preset._id);
 						let size = helper_f.getItemSize(item._id, rolled.preset._items[0]._id, rolled.preset._items);
 						// Guns will need to load a preset of items
 						item._props.presetId = rolled.preset._id;
