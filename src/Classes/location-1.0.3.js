@@ -30,21 +30,9 @@ function GenerateLootList(container) {
 		for (let item in _database.items) {
 			// check if checked item is an item itself or its a category
 			if (ItemParents.includes(sf_item)) {
-				// its a category so lets add all items that contains its id in _parent
-				if(_database.items[item]._parent == sf_item || ParentsToAdd.includes(_database.items[item]._parent)){
-                    // Another category. Add it to "ParentsToAdd" for later processing.
-                    if(ItemParents.includes(_database.items[item]._id)){
-						ParentsToAdd.push(_database.items[item]._id);
-					}
-					else {
-                        let itemId = _database.items[item]._id;
-                        LootList[itemId] = _database.items[item];
-                        if(typeof _database.items[item]._props.Chambers != "undefined")
-                            LootList[item]["preset"] = FindIfItemIsAPreset(itemId);
-                        else
-                            LootList[itemId]["preset"] = null;
-					}
-				}
+				// its a category so add it to ParentsToAdd for later processing
+				ParentsToAdd.push(sf_item);
+				break;
 			} else {
 				//its an item so lets add it into as item 
 				// we can actually break the loop after finding this item
@@ -59,6 +47,35 @@ function GenerateLootList(container) {
 			}
 		}
 	}
+	// Loop through parent IDs to add items
+	while(ParentsToAdd.length > 0){
+        let newParents = [];
+        for(let parent in ParentsToAdd){
+            for(let i in _database.items){
+                var item = _database.items[i];
+                if(item._parent == ParentsToAdd[parent]){
+                    if(ItemParents.includes(item._id)){
+                        newParents.push(item._id);
+                    }
+                    else{
+                        LootList[item._id] = item;
+                        if(typeof item._props.Chambers != "undefined")
+						    LootList[item._id]["preset"] = FindIfItemIsAPreset(item._id);
+					    else 
+						    LootList[item._id]["preset"] = null;
+                    }
+                }
+            }
+        }
+        ParentsToAdd = newParents;
+    }
+	LootList = Object.keys(LootList)
+    .map((key) => ({key, value: LootList[key]}))
+    .sort((a, b) => b.key.localeCompare(a.key))
+    .reduce((acc, e) => {
+      acc[e.key] = e.value;
+      return acc;
+    }, {});
 	return LootList;
 }
 function FindIfItemIsAPreset(ID_TO_SEARCH) {
@@ -332,6 +349,10 @@ class LocationServer {
 		//this.loot = fileIO.readParsed(db.cacheBase.location_statics);
 	}
 	/* generates a random location preset to use for local session */
+	generateContainerLoot(items){
+		_GenerateContainerLoot(items);
+		return items;
+	}
 	generate(name) {
 		//check if one file loot is existing
 		//let output = this.locations[name];
