@@ -349,10 +349,6 @@ class LocationServer {
 		//this.loot = fileIO.readParsed(db.cacheBase.location_statics);
 	}
 	/* generates a random location preset to use for local session */
-	generateContainerLoot(items){
-		_GenerateContainerLoot(items);
-		return items;
-	}
 	generate(name) {
 		//check if one file loot is existing
 		//let output = this.locations[name];
